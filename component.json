@@ -1,0 +1,17 @@
+{
+  "name": "progress",
+  "repo": "shallker/progress",
+  "description": "Progress calculation for animation",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "shallker-wang/eventy": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "lib/progress.js"
+  ]
+}
