@@ -9,17 +9,15 @@
     <script>
       var Progress = require('progress');
 
-      var easeInQuad = function (t, b, c, d) {
-        t /= d;
-
-        return c*t*t + b;
+      var easeInQuad = function (progression) {
+        return progression * progression;
       }
 
       var progress = new Progress;
 
       progress.begin = 0;
       progress.end = 100;
-      progress.easing = easeInQuad;
+      progress.delta = easeInQuad;
       progress.duration = 1000;
 
       progress.onStep = function (progress) {
@@ -29,6 +27,14 @@
       progress.onEnd = function () {
         console.log('onEnd')
       }
+
+      progress.on('progress', function (progress) {
+        console.log('progress', progress);
+      });
+
+      progress.on('progress-delta', function (progressDelta) {
+        console.log('progress-delta', progressDelta);
+      });
 
       progress.start();
       // progress.stop();
