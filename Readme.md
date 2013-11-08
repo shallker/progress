@@ -10,7 +10,16 @@
     $ component install shallker/progress
 
 ## API
-
+### progress
+#### .begin
+#### .end
+#### .easing
+#### .duration
+#### .onStep
+#### .onEnd
+#### .start()
+#### .stop()
+#### .pause()
 
 
 ## License
