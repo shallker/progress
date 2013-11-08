@@ -16,27 +16,9 @@
       var progress = new Progress;
 
       progress.begin = 0;
-      progress.end = 100;
-      progress.delta = easeInQuad;
-      progress.duration = 1000;
+      progress.end = 20;
 
-      progress.onStep = function (progress) {
-        console.log('onStep', progress)
-      }
-
-      progress.onEnd = function () {
-        console.log('onEnd')
-      }
-
-      progress.on('progress', function (progress) {
-        console.log('progress', progress);
-      });
-
-      progress.on('progress-delta', function (progressDelta) {
-        console.log('progress-delta', progressDelta);
-      });
-
-      progress.start();
+      // progress.start();
       // progress.stop();
       // progress.pause();
 

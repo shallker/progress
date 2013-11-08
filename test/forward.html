@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/build/build.js"></script>
+  </head>
+  <body>
+    <script>
+      var Progress = require('progress');
+      var progress = new Progress;
+
+      var easeInQuad = function (progression) {
+        return progression * progression;
+      }
+
+      progress.begin = 0;
+      progress.end = 1;
+      progress.forward(1000, easeInQuad);
+      progress.start();
+
+      progress.on('progression', function (progression) {
+        console.log('progression', progression);
+      });
+
+      progress.on('forward-step', function (progression) {
+        console.log('forward-step', progression);
+      });
+
+      progress.on('forward-end', function () {
+        progress.stop();
+      });
+
+    </script>
+  </body>
+</html>
