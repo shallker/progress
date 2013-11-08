@@ -2,7 +2,7 @@
   "name": "progress",
   "repo": "shallker/progress",
   "description": "Progress calculation for animation",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
     "shallker-wang/eventy": "*"
