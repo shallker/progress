@@ -39,7 +39,10 @@
         progress.delta = delta;
         progress.start();
         animate();
-        setTimeout(complete, duration);
+
+        setTimeout(function () {
+          complete && complete();
+        }, duration);
       }
 
       function stop(duration, delta, complete) {
@@ -52,7 +55,7 @@
 
         setTimeout(function () {
           stopAnimate();
-          complete();
+          complete && complete();
         }, duration);
       }
 
