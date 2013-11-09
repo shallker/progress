@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/build/build.js"></script>
+    <style>
+      #div {
+        background-color: green;
+        width: 10px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div"></div>
+    <script>
+      var Progress = require('progress');
+      var div = document.getElementById('div');
+
+      function easeInQuad(progression) {
+        return progression * progression;
+      }
+
+      function easeOutQuad(progression) {
+        return -progression * (progression - 2);
+      }
+
+      var progress
+      var interval;
+
+      div.style.width = '10px';
+
+      function start(duration, delta, complete) {
+        progress = new Progress;
+        progress.begin = 0;
+        progress.end = 4;
+        progress.duration = duration;
+        progress.delta = delta;
+        progress.start();
+        animate();
+        setTimeout(complete, duration);
+      }
+
+      function stop(duration, delta, complete) {
+        progress = new Progress;
+        progress.begin = 4;
+        progress.end = 0;
+        progress.duration = duration;
+        progress.delta = delta;
+        progress.start();
+
+        setTimeout(function () {
+          stopAnimate();
+          complete();
+        }, duration);
+      }
+
+      function animate() {
+        interval = setInterval(function () {
+          var width = parseFloat(div.style.width);
+
+          progress.now = new Date;
+          div.style.width = width + progress.progression + 'px';
+        }, 1000 / 60);
+      }
+
+      function stopAnimate() {
+        clearInterval(interval);
+      }
+
+      start(1000, easeInQuad, function () {
+        setTimeout(function () {
+          stop(1000, easeOutQuad);
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

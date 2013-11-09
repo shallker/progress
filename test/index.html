@@ -4,23 +4,39 @@
     <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/build/build.js"></script>
+    <style>
+      #div {
+        background-color: green;
+        width: 10px;
+        height: 50px;
+      }
+    </style>
   </head>
   <body>
+    <div id="div"></div>
     <script>
       var Progress = require('progress');
+      var div = document.getElementById('div');
 
-      var easeInQuad = function (progression) {
+      function easeInQuad(progression) {
         return progression * progression;
       }
 
       var progress = new Progress;
 
       progress.begin = 0;
-      progress.end = 20;
+      progress.end = 10;
+      progress.duration = 1000;
+      progress.delta = easeInQuad;
+      progress.start();
 
-      // progress.start();
-      // progress.stop();
-      // progress.pause();
+      var interval = setInterval(function () {
+        console.log(progress.progression);
+
+        if (progress.done) {
+          clearInterval(interval);
+        }
+      }, 10);
 
     </script>
   </body>
